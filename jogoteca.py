@@ -11,9 +11,7 @@ class Jogo:
         self.console = console
 
 
-jogo1 = Jogo('Super Mario', 'Ação', 'SNES')
-jogo2 = Jogo('Pokemon Gold', 'RPG', 'GBA')
-lista = [jogo1, jogo2]
+lista = []
 
 
 @app.route('/jogos')
@@ -35,11 +33,9 @@ def criar():
     lista.append(jogo)
     return redirect('/jogos')
 
-
 @app.route('/')
 def login():
     return render_template('login.html')
-
 
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
@@ -56,6 +52,9 @@ def logout():
     session['usuario_logado'] = None
     flash('Nenhum usuário logado!')
     return redirect('/')
+
+
+
 
 
 app.run(debug=True)
